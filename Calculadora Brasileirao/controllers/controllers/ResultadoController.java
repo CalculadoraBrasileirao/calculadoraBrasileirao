@@ -1,5 +1,6 @@
 package controllers;
 
+import campeonato.CampeonatoDAO;
 import modelsVO.Resultado;
 import postgres.BancoFactoryDAO;
 import resultado.ResultadoDAO;
@@ -35,7 +36,11 @@ public class ResultadoController {
 		resultadoDAO.insertResultado(resultado);
 	}
 	
-	
+	public CampeonatoDAO iniciaConexao() {
+		BancoFactoryDAO banco= new BancoFactoryDAO();
+		CampeonatoDAO campeonatoDAO = banco.getCampeonato();
+		return campeonatoDAO;
+	}
 	
 
 }

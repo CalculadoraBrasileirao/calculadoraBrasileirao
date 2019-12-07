@@ -11,11 +11,18 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.border.CompoundBorder;
 import java.awt.Color;
+import javax.swing.JScrollPane;
+import java.awt.BorderLayout;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Classificacao {
 
 	private JFrame frmCalculadoraBrasileirao;
 	private JTable table;
+	private JButton btnNewButton;
 
 	/**
 	 * Launch the application.
@@ -51,54 +58,62 @@ public class Classificacao {
 		frmCalculadoraBrasileirao.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCalculadoraBrasileirao.getContentPane().setLayout(null);
 		
-				table = new JTable();
-				table.setBackground(Color.WHITE);
-				table.setModel(new DefaultTableModel(
-					new Object[][] {
-						{new Integer(1), null, null, null, null, null, null},
-						{new Integer(2), null, null, null, null, null, null},
-						{new Integer(3), null, null, null, null, null, null},
-						{new Integer(4), null, null, null, null, null, null},
-						{new Integer(5), null, null, null, null, null, null},
-						{new Integer(6), null, null, null, null, null, null},
-						{new Integer(7), null, null, null, null, null, null},
-						{new Integer(8), null, null, null, null, null, null},
-						{new Integer(9), null, null, null, null, null, null},
-						{new Integer(10), null, null, null, null, null, null},
-						{new Integer(11), null, null, null, null, null, null},
-						{new Integer(12), null, null, null, null, null, null},
-						{new Integer(13), null, null, null, null, null, null},
-						{new Integer(14), null, null, null, null, null, null},
-						{new Integer(15), null, null, null, null, null, null},
-						{new Integer(16), null, null, null, null, null, null},
-						{new Integer(17), null, null, null, null, null, null},
-						{new Integer(18), null, null, null, null, null, null},
-						{new Integer(19), null, null, null, null, null, null},
-						{new Integer(20), null, null, null, null, null, null},
-					},
-					new String[] {
-						"Coloca\u00E7\u00E3o", "Time", "PTS", "VIT", "EMP", "DER", "SG"
-					}
-				) {
-					Class[] columnTypes = new Class[] {
-						Integer.class, String.class, Integer.class, Integer.class, Integer.class, Integer.class, Integer.class
-					};
-					
-					
-					public Class getColumnClass(int columnIndex) {
-						return columnTypes[columnIndex];
-					}
-				});
-				table.getColumnModel().getColumn(0).setPreferredWidth(79);
-				table.setBounds(470, 53, -439, 468);
-				
-				
-		frmCalculadoraBrasileirao.getContentPane().add(table);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 91, 454, 540);
+		frmCalculadoraBrasileirao.getContentPane().add(scrollPane);
 		
-		JLabel lblClassificao = new JLabel("Classificacao");
-		lblClassificao.setHorizontalAlignment(SwingConstants.CENTER);
-		lblClassificao.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblClassificao.setBounds(10, 11, 434, 31);
-		frmCalculadoraBrasileirao.getContentPane().add(lblClassificao);
+		table = new JTable();
+		table.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{new Integer(1), null, null, null, null, null, null},
+				{new Integer(2), null, null, null, null, null, null},
+				{new Integer(3), null, null, null, null, null, null},
+				{new Integer(4), null, null, null, null, null, null},
+				{new Integer(5), null, null, null, null, null, null},
+				{new Integer(6), null, null, null, null, null, null},
+				{new Integer(7), null, null, null, null, null, null},
+				{new Integer(8), null, null, null, null, null, null},
+				{new Integer(9), null, null, null, null, null, null},
+				{new Integer(10), null, null, null, null, null, null},
+				{new Integer(11), null, null, null, null, null, null},
+				{new Integer(12), null, null, null, null, null, null},
+				{new Integer(13), null, null, null, null, null, null},
+				{new Integer(14), null, null, null, null, null, null},
+				{new Integer(15), null, null, null, null, null, null},
+				{new Integer(16), null, null, null, null, null, null},
+				{new Integer(17), null, null, null, null, null, null},
+				{new Integer(18), null, null, null, null, null, null},
+				{new Integer(19), null, null, null, null, null, null},
+				{new Integer(20), null, null, null, null, null, null},
+			},
+			new String[] {
+				"Coloca\u00E7\u00E3o", "Time", "PTS", "VIT", "DER", "EMP", "SG"
+			}
+		) {
+			Class[] columnTypes = new Class[] {
+				Integer.class, String.class, Integer.class, Integer.class, Object.class, Object.class, Object.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
+		scrollPane.setViewportView(table);
+		
+		JLabel lblNewLabel = new JLabel("Classifica\u00E7\u00E3o");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblNewLabel.setBounds(113, 28, 223, 31);
+		frmCalculadoraBrasileirao.getContentPane().add(lblNewLabel);
+		
+		btnNewButton = new JButton("Voltar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//new MenuPrincipal().inicia();
+				frmCalculadoraBrasileirao.dispose();
+			}
+		});
+		btnNewButton.setBounds(14, 57, 89, 23);
+		frmCalculadoraBrasileirao.getContentPane().add(btnNewButton);
 	}
 }

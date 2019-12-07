@@ -7,7 +7,7 @@ import modelsVO.Rodada;
 import modelsVO.Time;
 
 public class RodadasBO {
-
+	
 	public ArrayList<Rodada> geraRodadas(ArrayList<Partida> partidas, ArrayList<Time> times){
         ArrayList<Rodada> listRodada = new ArrayList<Rodada>();
 

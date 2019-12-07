@@ -7,9 +7,22 @@ import javax.swing.JLabel;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.util.ArrayList;
+
 import javax.swing.SwingConstants;
+
+import com.mysql.cj.x.protobuf.MysqlxNotice.Frame;
+
+import controllers.ResultadoController;
+import controllers.TimeController;
+import modelsVO.Resultado;
+import modelsVO.Time;
+
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.JSpinner;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Resultados {
 
@@ -69,48 +82,86 @@ public class Resultados {
 		
 		JLabel lblTimeEmCasa = new JLabel("Time em Casa");
 		lblTimeEmCasa.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblTimeEmCasa.setBounds(237, 119, 194, 31);
+		lblTimeEmCasa.setBounds(254, 119, 194, 31);
 		frmCalculadoraBrasileirao.getContentPane().add(lblTimeEmCasa);
 		
 		JLabel lblGolsMarcados = new JLabel("Gols Marcados");
 		lblGolsMarcados.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblGolsMarcados.setBounds(146, 196, 194, 31);
+		lblGolsMarcados.setBounds(130, 194, 194, 31);
 		frmCalculadoraBrasileirao.getContentPane().add(lblGolsMarcados);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(34, 149, 135, 22);
-		frmCalculadoraBrasileirao.getContentPane().add(comboBox);
+		JComboBox<String> comboBoxVisitante = new JComboBox<String>();
+		ArrayList<Time> times = new TimeController().iniciaConexao().getAllTime();
+		for (Time time : times) {
+			comboBoxVisitante.addItem(time.getNome());
+		}
+		comboBoxVisitante.setBounds(34, 149, 135, 22);
+		frmCalculadoraBrasileirao.getContentPane().add(comboBoxVisitante);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(237, 149, 131, 22);
-		frmCalculadoraBrasileirao.getContentPane().add(comboBox_1);
+		JComboBox<String> comboBoxCasa = new JComboBox<String> ();
+		ArrayList<Time> timesCasa = new TimeController().iniciaConexao().getAllTime();
+		for (Time time : timesCasa) {
+			comboBoxCasa.addItem(time.getNome());
+		}
+		comboBoxCasa.setBounds(237, 149, 131, 22);
+		frmCalculadoraBrasileirao.getContentPane().add(comboBoxCasa);
 		
 		JLabel label = new JLabel("Time Visitante");
 		label.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		label.setBounds(36, 238, 194, 31);
 		frmCalculadoraBrasileirao.getContentPane().add(label);
 		
-		JComboBox comboBox_2 = new JComboBox();
-		comboBox_2.setBounds(34, 265, 135, 22);
-		frmCalculadoraBrasileirao.getContentPane().add(comboBox_2);
-		
-		JComboBox comboBox_3 = new JComboBox();
-		comboBox_3.setBounds(237, 265, 131, 22);
-		frmCalculadoraBrasileirao.getContentPane().add(comboBox_3);
-		
 		JLabel label_1 = new JLabel("Time em Casa");
 		label_1.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		label_1.setBounds(237, 238, 194, 31);
+		label_1.setBounds(240, 236, 194, 31);
 		frmCalculadoraBrasileirao.getContentPane().add(label_1);
 		
 		JButton btnNewButton = new JButton("Voltar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frmCalculadoraBrasileirao.dispose();
+				new MenuPrincipal().inicia();;
+			}
+		});
+		
+		
+		JSpinner spinnerVisitante = new JSpinner();
+		spinnerVisitante.setBounds(34, 266, 88, 20);
+		frmCalculadoraBrasileirao.getContentPane().add(spinnerVisitante);
+		
+		JSpinner spinnerCasa = new JSpinner();
+		spinnerCasa.setBounds(240, 264, 88, 20);
+		frmCalculadoraBrasileirao.getContentPane().add(spinnerCasa);
+		
+		
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton.setBounds(80, 361, 89, 23);
+		btnNewButton.setBounds(34, 386, 89, 23);
 		frmCalculadoraBrasileirao.getContentPane().add(btnNewButton);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+				
+				System.out.println(spinnerVisitante.getValue());
+				System.out.println(spinnerCasa.getValue());
+			}
+		});
 		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnCadastrar.setBounds(237, 361, 103, 23);
+		btnCadastrar.setBounds(237, 386, 103, 23);
 		frmCalculadoraBrasileirao.getContentPane().add(btnCadastrar);
+		
+		JLabel lblDataDaPartida = new JLabel("Data da partida");
+		lblDataDaPartida.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblDataDaPartida.setBounds(34, 323, 103, 28);
+		frmCalculadoraBrasileirao.getContentPane().add(lblDataDaPartida);
+		
+		JLabel label_2 = new JLabel("");
+		label_2.setBounds(237, 332, 87, 19);
+		frmCalculadoraBrasileirao.getContentPane().add(label_2);
+		
+		
 	}
 }

@@ -3,8 +3,13 @@ package gui;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import controllers.CampeonatoController;
+
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -58,14 +63,17 @@ public class MenuPrincipal {
 		lblSelecioneOCampeonato.setBounds(125, 95, 199, 22);
 		frame.getContentPane().add(lblSelecioneOCampeonato);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox<String> comboBox = new JComboBox<String>();
+		CampeonatoController controller = new CampeonatoController();
+		comboBox.addItem(controller.iniciaConexao().getCampeonato(1).getNome());
+
 		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		comboBox.setBounds(125, 141, 186, 22);
 		frame.getContentPane().add(comboBox);
 		
 		JLabel lblConsultas = new JLabel("Consultas");
 		lblConsultas.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblConsultas.setBounds(46, 189, 90, 14);
+		lblConsultas.setBounds(60, 189, 90, 14);
 		frame.getContentPane().add(lblConsultas);
 		
 		JLabel lblCadastros = new JLabel("Cadastros");
@@ -74,6 +82,11 @@ public class MenuPrincipal {
 		frame.getContentPane().add(lblCadastros);
 		
 		JButton btnConsultarCampeonato = new JButton("Consultar Campeonato");
+		btnConsultarCampeonato.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,"Funcionalidade não disponível","Não disponivel no Beta", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
 		btnConsultarCampeonato.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnConsultarCampeonato.setBounds(12, 227, 186, 23);
 		frame.getContentPane().add(btnConsultarCampeonato);
@@ -81,26 +94,39 @@ public class MenuPrincipal {
 		JButton btnConsultarClassificacao = new JButton("Consultar Classifica\u00E7\u00E3o"); // INICIA NOVA CLASSIFICACAO
 		btnConsultarClassificacao.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//frame.dispose();
-				
 				new Classificacao().inicia();
 			}
 		});
 		btnConsultarClassificacao.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnConsultarClassificacao.setBounds(12, 267, 186, 23);
+		btnConsultarClassificacao.setBounds(12, 261, 186, 23);
 		frame.getContentPane().add(btnConsultarClassificacao);
 		
 		JButton btnConsultarResultados = new JButton("Consultar Resultados");
+		btnConsultarResultados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,"Funcionalidade não disponível","Não disponivel no Beta", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
 		btnConsultarResultados.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnConsultarResultados.setBounds(12, 302, 186, 23);
+		btnConsultarResultados.setBounds(12, 295, 186, 23);
 		frame.getContentPane().add(btnConsultarResultados);
 		
 		JButton btnCadastroDeCampeonato = new JButton("Cadastro de Campeonato");
+		btnCadastroDeCampeonato.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,"Funcionalidade não disponível","Não disponivel no Beta", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
 		btnCadastroDeCampeonato.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCadastroDeCampeonato.setBounds(224, 227, 200, 23);
 		frame.getContentPane().add(btnCadastroDeCampeonato);
 		
 		JButton btnCadastroDeTimes = new JButton("Cadastro de Times");
+		btnCadastroDeTimes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,"Funcionalidade não disponível","Não disponivel no Beta", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
 		btnCadastroDeTimes.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCadastroDeTimes.setBounds(224, 261, 200, 23);
 		frame.getContentPane().add(btnCadastroDeTimes);
@@ -120,5 +146,15 @@ public class MenuPrincipal {
 		btnDefinirRodadas.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnDefinirRodadas.setBounds(224, 329, 200, 23);
 		frame.getContentPane().add(btnDefinirRodadas);
+		
+		JButton btnConsultarEstatisticas = new JButton("Consultar Estatisticas");
+		btnConsultarEstatisticas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new Estatisticas().inicia();
+			}
+		});
+		btnConsultarEstatisticas.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnConsultarEstatisticas.setBounds(12, 331, 186, 23);
+		frame.getContentPane().add(btnConsultarEstatisticas);
 	}
 }

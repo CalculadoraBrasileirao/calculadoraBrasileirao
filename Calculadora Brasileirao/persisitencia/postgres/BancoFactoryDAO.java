@@ -15,10 +15,9 @@ public class BancoFactoryDAO extends FactoryDAO {
 	private Connection conexao;
 	
 	 public BancoFactoryDAO(){
-		this.conexao = getConnection("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/CalculadoraBrasileirao" 
-		,"postgres","postgres");
+		this.conexao = getConnection("com.mysql.cj.jdbc.Driver", "jdbc:mysql://localhost:3306/calculadorabrasileirao?useTimezone=true&serverTimezone=UTC" 
+		,"root","mysql");
 	}
-	
 
 	public Connection getConnection(String driver, String conexao, String usuario, String senha) {
 		
@@ -30,7 +29,7 @@ public class BancoFactoryDAO extends FactoryDAO {
 		} catch (ClassNotFoundException e) {
 			System.out.println("Erro ao encontrar driver");
 		} catch (SQLException e) {
-			System.out.println("Erro ao conectar");
+			System.out.println("Erro ao conectar "+ e);
 		}
 		
 		return con;
