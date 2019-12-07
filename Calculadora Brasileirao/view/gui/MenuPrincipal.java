@@ -7,6 +7,8 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MenuPrincipal {
 
@@ -15,7 +17,7 @@ public class MenuPrincipal {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public void inicia() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -27,7 +29,8 @@ public class MenuPrincipal {
 			}
 		});
 	}
-
+	
+	
 	/**
 	 * Create the application.
 	 */
@@ -72,17 +75,24 @@ public class MenuPrincipal {
 		
 		JButton btnConsultarCampeonato = new JButton("Consultar Campeonato");
 		btnConsultarCampeonato.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnConsultarCampeonato.setBounds(12, 227, 172, 23);
+		btnConsultarCampeonato.setBounds(12, 227, 186, 23);
 		frame.getContentPane().add(btnConsultarCampeonato);
 		
-		JButton btnConsultarClassificao = new JButton("Consultar Classifica\u00E7\u00E3o");
-		btnConsultarClassificao.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnConsultarClassificao.setBounds(12, 267, 172, 23);
-		frame.getContentPane().add(btnConsultarClassificao);
+		JButton btnConsultarClassificacao = new JButton("Consultar Classifica\u00E7\u00E3o"); // INICIA NOVA CLASSIFICACAO
+		btnConsultarClassificacao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//frame.dispose();
+				
+				new Classificacao().inicia();
+			}
+		});
+		btnConsultarClassificacao.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnConsultarClassificacao.setBounds(12, 267, 186, 23);
+		frame.getContentPane().add(btnConsultarClassificacao);
 		
 		JButton btnConsultarResultados = new JButton("Consultar Resultados");
 		btnConsultarResultados.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnConsultarResultados.setBounds(12, 302, 172, 23);
+		btnConsultarResultados.setBounds(12, 302, 186, 23);
 		frame.getContentPane().add(btnConsultarResultados);
 		
 		JButton btnCadastroDeCampeonato = new JButton("Cadastro de Campeonato");
@@ -95,7 +105,13 @@ public class MenuPrincipal {
 		btnCadastroDeTimes.setBounds(224, 261, 200, 23);
 		frame.getContentPane().add(btnCadastroDeTimes);
 		
-		JButton btnCadastroDeResultados = new JButton("Cadastro de Resultados");
+		JButton btnCadastroDeResultados = new JButton("Cadastro de Resultados"); // INICIA JANELA DE CADASTRO DE RESULTADO
+		btnCadastroDeResultados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//frame.dispose();
+				new Resultados().inicia();;
+			}
+		});
 		btnCadastroDeResultados.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnCadastroDeResultados.setBounds(224, 295, 200, 23);
 		frame.getContentPane().add(btnCadastroDeResultados);

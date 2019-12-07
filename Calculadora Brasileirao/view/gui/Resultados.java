@@ -1,13 +1,13 @@
 package gui;
 
-import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.BorderLayout;
+
+import java.awt.EventQueue;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-import javax.swing.JSpinner;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 
@@ -15,10 +15,11 @@ public class Resultados {
 
 	private JFrame frmCalculadoraBrasileirao;
 
+
 	/**
-	 * Launch the application.
+	 * Create the application.
 	 */
-	public static void main(String[] args) {
+	public void inicia() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -30,10 +31,12 @@ public class Resultados {
 			}
 		});
 	}
-
+	
+	
 	/**
-	 * Create the application.
+	 * Launch the application.
 	 */
+	
 	public Resultados() {
 		initialize();
 	}

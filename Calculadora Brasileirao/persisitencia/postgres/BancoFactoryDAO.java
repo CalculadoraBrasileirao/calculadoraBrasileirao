@@ -4,13 +4,19 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import campeonato.CampeonatoDAO;
+import campeonato_time.CampeonatoTimeDAO;
+import partida.PartidaDAO;
+import resultado.ResultadoDAO;
+import time.TimeDAO;
+
 public class BancoFactoryDAO extends FactoryDAO {
 
 	private Connection conexao;
 	
 	 public BancoFactoryDAO(){
 		this.conexao = getConnection("org.postgresql.Driver", "jdbc:postgresql://localhost:5432/CalculadoraBrasileirao" 
-		,"postgres","postgress");
+		,"postgres","postgres");
 	}
 	
 
@@ -30,16 +36,30 @@ public class BancoFactoryDAO extends FactoryDAO {
 		return con;
 	}
 
-	public Connection getConexao() {
-		return this.conexao;
+	@Override
+	public ResultadoDAO getResultado() {
+		return new ResultadoDAO(this.conexao);
+	}
+	
+	@Override
+	public TimeDAO getTime() {
+		return new TimeDAO(this.conexao);
 	}
 
 
 	@Override
-	public ResultadoDAO getResultado() {
-		
-		return new ResultadoDAO(conexao);
+	public CampeonatoDAO getCampeonato() {
+		return new CampeonatoDAO(this.conexao);
 	}
+	
+	public CampeonatoTimeDAO getCampeonatoTime() {
+		return new CampeonatoTimeDAO(this.conexao);
+	}
+	
+	public PartidaDAO getPartida() {
+		return new PartidaDAO(this.conexao);
+	}
+
 
 	@Override
 	public void fechaConexao() {
@@ -48,6 +68,5 @@ public class BancoFactoryDAO extends FactoryDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
-
+	}	
 }
